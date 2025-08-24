@@ -1,25 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Page</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; margin: 40px; }
-        img { border-radius: 50%; width: 150px; height: 150px; object-fit: cover; }
-        .links a { margin: 10px; display: inline-block; text-decoration: none; color: blue; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ishrat Arshad • Portfolio</title>
+  <meta name="description" content="Ishrat Arshad • CS student & builder. Projects, resume, and links." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-1:#0b0613;
+      --bg-2:#1b0f2e;
+      --ink:#f7e9ff;
+      --muted:#cfb7ff;
+      --accent:#e26ddb;
+      --accent-2:#9b5cff;
+      --glass:rgba(255,255,255,0.08);
+      --shadow:0 10px 30px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.06);
+      --radius:20px;
+    }
+    body{margin:0;color:var(--ink);font-family:Inter,sans-serif;background:linear-gradient(120deg,var(--bg-1),var(--bg-2));overflow-x:hidden;}
+    .orb{position:fixed;filter:blur(40px);opacity:.5;z-index:-1;mix-blend-mode:screen;}
+    .orb.one{width:600px;height:600px;left:-150px;top:-120px;background:radial-gradient(circle at 30% 30%,#ff82e7,transparent 60%);animation:float 12s ease-in-out infinite;}
+    .orb.two{width:520px;height:520px;right:-160px;top:30vh;background:radial-gradient(circle at 60% 40%,#a884ff,transparent 60%);animation:float 14s ease-in-out infinite reverse;}
+    .orb.three{width:420px;height:420px;left:20vw;bottom:-120px;background:radial-gradient(circle at 60% 40%,#ff5bab,transparent 60%);animation:float 18s ease-in-out infinite;}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+    .wrap{max-width:1000px;margin:0 auto;padding:72px 20px 100px;}
+    .card{margin-top:36px;display:grid;grid-template-columns:220px 1fr;gap:28px;align-items:center;padding:28px;background:var(--glass);border-radius:var(--radius);box-shadow:var(--shadow);backdrop-filter:blur(10px);}
+    @media(max-width:760px){.card{grid-template-columns:1fr}}
+    .avatar{width:220px;height:220px;border-radius:24px;object-fit:cover;box-shadow:var(--shadow);border:2px solid rgba(255,255,255,.12)}
+    h1{font-size:38px;line-height:1.1;margin:0 0 8px;}
+    .title{font-weight:600;color:var(--muted);margin-bottom:14px}
+    p{color:#e9dbffcc;line-height:1.6}
+    .badges{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 6px}
+    .badge{font-size:12px;padding:6px 10px;border-radius:999px;background:linear-gradient(135deg,rgba(231,116,221,.22),rgba(155,92,255,.22));border:1px solid rgba(255,255,255,.14)}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .btn{padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.16);text-decoration:none;color:var(--ink);display:inline-flex;align-items:center;gap:10px;box-shadow:var(--shadow);transition:.2s transform,.2s filter,.2s background}
+    .btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2))}
+    .btn.ghost{background:rgba(255,255,255,.06)}
+    .bio{max-height:250px;overflow:hidden;position:relative;transition:max-height .6s ease;}
+    .bio.expanded{max-height:2000px;}
+    .read-more{color:var(--accent);cursor:pointer;font-size:14px;display:inline-block;margin-top:10px;}
+  </style>
 </head>
 <body>
-    <h1>Your Name</h1>
-    <img src="your-photo.jpg" alt="Your Photo">
-    <p>Hello! I’m [Your Name], a [your role/major]. Fun fact: [insert fun fact here 🎉].</p>
-
-    <h2>Links</h2>
-    <div class="links">
-        <a href="resume.pdf" target="_blank">Resume</a>
-        <a href="https://www.linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
-        <a href="https://github.com/yourusername" target="_blank">GitHub</a>
-    </div>
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+  <div class="orb three"></div>
+  <div class="wrap">
+    <main class="card" id="about">
+      <img class="avatar" src="Ishrat_Arshad_Photo.png" alt="Portrait of Ishrat Arshad" />
+      <div>
+        <h1>Hi, I’m Ishrat <span style="color:var(--accent)">Arshad</span> 👋</h1>
+        <div class="title">Computer Science & Economics • AI/ML Fellow • Tech Lead</div>
+        <div class="bio" id="bio">
+          <p>I’m Ishrat Arshad, a Computer Science and Economics major at Hunter College, with a strong interest in AI, data analysis, and creating technology that makes a real impact. I’m passionate about exploring how technology and data connect to the real world and how they can be used to solve meaningful problems.</p>
+          <p>My experiences span software engineering, product management, and leadership. In my software engineering internships, I built and improved real features while collaborating across teams, and in one role I was promoted to Product Manager, where I guided projects from idea to implementation, balancing technical detail with strategy and user needs. Outside of internships, I’ve led as Tech Lead Director of the CS Club and mentored students through coding programs, experiences that strengthened both my technical foundation and my ability to collaborate and lead.</p>
+          <p>I’m especially passionate about how technology can bridge gaps in healthcare, education, and access for underrepresented communities. At my core, I’m curious and entrepreneurial. I love building from the ground up, combining creativity with problem-solving, and working in spaces that allow me to keep learning and growing. What drives me most is the opportunity to create work that is not only technically strong but also meaningful, accessible, and impactful in everyday life.</p>
+        </div>
+        <span class="read-more" id="toggleBio">Read more ▼</span>
+        <div class="badges">
+          <div class="badge">Python • C++ • JavaScript</div>
+          <div class="badge">React.js • Flask • SQL</div>
+          <div class="badge">Data Analysis • AI/ML</div>
+          <div class="badge">Leadership • Product Mgmt</div>
+        </div>
+        <p><strong>Fun fact:</strong> I once optimized a health assistant app’s speech recognition to work at 92% accuracy in a noisy NYC café ☕.</p>
+        <div class="cta" id="links">
+          <a class="btn primary" href="Ishrat_Arshad_Resume.pdf" target="_blank" rel="noopener">📄 Resume</a>
+          <a class="btn ghost" href="https://www.linkedin.com/in/ishratarshad" target="_blank" rel="noopener">🔗 LinkedIn</a>
+          <a class="btn ghost" href="https://github.com/ishratarshad" target="_blank" rel="noopener">💻 GitHub</a>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script>
+    const bio=document.getElementById('bio');
+    const toggle=document.getElementById('toggleBio');
+    toggle.addEventListener('click',()=>{
+      bio.classList.toggle('expanded');
+      toggle.textContent=bio.classList.contains('expanded')?"Show less ▲":"Read more ▼";
+    });
+  </script>
 </body>
 </html>
