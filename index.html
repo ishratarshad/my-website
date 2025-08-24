@@ -312,9 +312,9 @@ $1
         <code id="termCode"></code><span class="cursor">▌</span>
       </div>
       <div class="actions" style="gap:8px;align-items:center">
-        <button id="commitBtn" class="commit-btn" aria-label="Commit">git commit -m "hello world"</button>
+        <button id=\"commitBtn\" class=\"commit-btn\" aria-label=\"Run\">Run ▶<\/button>
         <div class="progress" id="commitProg"><div class="bar" id="commitBar"></div></div>
-        <span class="commit-status" id="commitStatus" hidden>Committed to <b>main</b> ✓</span>
+        <span class=\"commit-status\" id=\"commitStatus\" hidden>Program exited with code 0 ✓<\/span>
         <button id="closeModal" aria-label="Close">Close <span class="brand-sub">Esc</span></button>
       </div>
     </div>
@@ -353,7 +353,7 @@ hello world, i\'m Ishrat Arshad';
           setTimeout(tick, 40);
         } else {
           cursor.style.opacity = .3;
-          setTimeout(()=>simulateCommit(), 600);
+          /* click Run to execute */
         }
       };
       tick();
@@ -369,7 +369,7 @@ hello world, i\'m Ishrat Arshad';
         if(w>=100){
           clearInterval(t);
           status.hidden = false;
-          commitBtn.textContent = 'Committed ✓';
+          commitBtn.textContent = 'Ran ✓';
           commitBtn.dataset.done='1';
         }
       }, 60);
