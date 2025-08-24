@@ -76,6 +76,19 @@
     @media(min-width:900px){.projects-list{grid-template-columns:1fr 1fr}}
     .project-item{min-height:unset}
     .experience-item{min-height:unset}
+    /* Fix experience overlap and wrapping */
+    .experience-list{display:flex;flex-direction:column;gap:32px;}
+    .experience-item{display:flex;flex-direction:row;align-items:flex-start;gap:16px;flex-wrap:nowrap;}
+    .experience-item > div{flex:1;min-width:0;}
+    .exp-body{white-space:normal;word-wrap:break-word;}
+    /* HERO / ABOUT */
+    .hero{margin-top:28px;display:grid;grid-template-columns:240px 1fr;gap:28px;align-items:center;padding:30px;border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.05));box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.12)}
+    @media(max-width:760px){.hero{grid-template-columns:1fr}}
+    .avatar{width:240px;height:240px;border-radius:26px;object-fit:cover;box-shadow:var(--shadow);border:2px solid rgba(255,255,255,.12)}
+    .title{font-weight:600;color:#cfb7ff;margin-bottom:14px}
+    .bio{max-height:240px;overflow:hidden;position:relative;transition:max-height .6s ease}
+    .bio.expanded{max-height:2000px}
+    .read-more{color:#e26ddb;cursor:pointer;font-size:14px;display:inline-block;margin-top:10px}
   </style>
 </head>
 <body>
@@ -102,14 +115,37 @@
     <!-- Section: About -->
     <section id="about">
       <h1>Hi, I’m <span class="gradient-text">Ishrat Arshad</span> 👋</h1>
-      <p>Computer Science & Economics major at Hunter College with strong interest in AI, data analysis, and building technology with real-world impact.</p>
+      <div class="hero">
+        <img class="avatar" src="Ishrat_Arshad_Photo.png" alt="Portrait of Ishrat Arshad"/>
+        <div>
+          <div class="title">Computer Science & Economics • AI/ML • Builder</div>
+          <div class="bio" id="bio">
+            <p>I’m Ishrat Arshad, a Computer Science and Economics major at Hunter College, with a strong interest in AI, data analysis, and creating technology that makes a real impact. I’m passionate about exploring how technology and data connect to the real world and how they can be used to solve meaningful problems.</p>
+            <p>My experiences span software engineering, product management, and leadership. In my software engineering internships, I built and improved real features while collaborating across teams, and in one role I was promoted to Product Manager, where I guided projects from idea to implementation, balancing technical detail with strategy and user needs. Outside of internships, I’ve led as Tech Lead Director of the CS Club and mentored students through coding programs, experiences that strengthened both my technical foundation and my ability to collaborate and lead.</p>
+            <p>I’m especially passionate about how technology can bridge gaps in healthcare, education, and access for underrepresented communities. At my core, I’m curious and entrepreneurial. I love building from the ground up, combining creativity with problem-solving, and working in spaces that allow me to keep learning and growing. What drives me most is the opportunity to create work that is not only technically strong but also meaningful, accessible, and impactful in everyday life.</p>
+          </div>
+          <span class="read-more" id="toggleBio">Read more ▼</span>
+          <div class="badges" style="margin-top:10px">
+            <div class="badge">Python • C++ • JavaScript</div>
+            <div class="badge">React.js • Flask • SQL</div>
+            <div class="badge">Data Analysis • AI/ML</div>
+            <div class="badge">Leadership • Product Mgmt</div>
+          </div>
+          <div class="cta" style="margin-top:12px">
+            <a class="btn primary" href="Ishrat_Arshad_Resume.pdf" target="_blank" rel="noopener">📄 Resume</a>
+            <a class="btn ghost" href="https://www.linkedin.com/in/ishratarshad" target="_blank" rel="noopener">🔗 LinkedIn</a>
+            <a class="btn ghost" href="https://github.com/ishratarshad" target="_blank" rel="noopener">💻 GitHub</a>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Section: Experience -->
     <section class="section" id="experience">
       <h2>Experience</h2>
-      <div class="experience-list">
-        <div class="experience-item">
+      <div class="experience-list" role="list">
+        <!-- 1. Movement Vault -->
+        <article class="experience-item" role="listitem">
           <div class="exp-logo mv" aria-hidden="true">MV</div>
           <div>
             <div class="exp-header">
@@ -121,7 +157,25 @@
             </div>
             <div class="exp-body">Optimized app performance by incorporating lazy loading for images and videos stored in AWS S3, ensuring efficient resource usage, which led to a 10% decrease in initial load-up time for 4500+ exercises.</div>
           </div>
-        <div class="experience-item">
+        </article>
+
+        <!-- 2. Unadat -->
+        <article class="experience-item" role="listitem">
+          <div class="exp-logo un" aria-hidden="true">UN</div>
+          <div>
+            <div class="exp-header">
+              <div>
+                <div class="exp-role">Software Engineer Intern – Associate Product Manager</div>
+                <div class="exp-org">Unadat (Remote)</div>
+                <div class="exp-date">May 2025 – Present</div>
+              </div>
+            </div>
+            <div class="exp-body">Developed production-ready features and UI components for a scalable SaaS web app, implemented interactive front-end interfaces with backend integration using HTML, JS, PHP, Google Cloud, and optimized application performance across devices.</div>
+          </div>
+        </article>
+
+        <!-- 3. CUNY Tech Prep (under internships) -->
+        <article class="experience-item" role="listitem">
           <div class="exp-logo ctp" aria-hidden="true">CTP</div>
           <div>
             <div class="exp-header">
@@ -133,9 +187,10 @@
             </div>
             <div class="exp-body">Selected for a competitive data science fellowship gaining hands-on experience in data analytics, machine learning, and full-stack development.</div>
           </div>
-        </div>
+        </article>
 
-        <div class="experience-item">
+        <!-- 4. The Difference App -->
+        <article class="experience-item" role="listitem">
           <div class="exp-logo td" aria-hidden="true">TD</div>
           <div>
             <div class="exp-header">
@@ -147,9 +202,10 @@
             </div>
             <div class="exp-body">Developed and deployed cross-platform health app features serving 700+ active users using Flutter, Laravel, and MySQL. Streamlined development operations with comprehensive local environment setup, reducing onboarding time and accelerating QA integration.</div>
           </div>
-        </div>
+        </article>
 
-        <div class="experience-item">
+        <!-- 5. NeuralSeek -->
+        <article class="experience-item" role="listitem">
           <div class="exp-logo ns" aria-hidden="true">NS</div>
           <div>
             <div class="exp-header">
@@ -161,9 +217,10 @@
             </div>
             <div class="exp-body">Designed and deployed custom AI agents using NeuralSeek’s no-code orchestration platform with multi-agent architecture and LLM integration. Completed certifications in AI Agent Architecture, Explainability, and Human-in-the-Loop systems.</div>
           </div>
-        </div>
+        </article>
 
-        <div class="experience-item">
+        <!-- 6. Cornell Tech & Breakthrough Tech -->
+        <article class="experience-item" role="listitem">
           <div class="exp-logo ct" aria-hidden="true">CT</div>
           <div>
             <div class="exp-header">
@@ -175,9 +232,10 @@
             </div>
             <div class="exp-body">Engineered and optimized end-to-end ML pipelines with Python, scikit-learn, and pandas, focusing on fairness, explainability, and scalability. Presented technical findings to engineering teams and mentors.</div>
           </div>
-        </div>
+        </article>
 
-        <div class="experience-item">
+        <!-- 7. Hunter College TA -->
+        <article class="experience-item" role="listitem">
           <div class="exp-logo hc" aria-hidden="true">HC</div>
           <div>
             <div class="exp-header">
@@ -189,7 +247,7 @@
             </div>
             <div class="exp-body">Facilitated tutoring for 40+ students in Data Structures & Algorithms (C++). Guided weekly labs on recursion, polymorphism, and backtracking, improving comprehension and debugging skills.</div>
           </div>
-        </div>
+        </article>
       </div>
     </section>
 
@@ -259,6 +317,10 @@
         if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth',block:'start'}); }
       });
     });
+      // Read more toggle re-bind (in case prior handler was removed)
+    const bioEl=document.getElementById('bio');
+    const toggleEl=document.getElementById('toggleBio');
+    if(toggleEl){ toggleEl.addEventListener('click',()=>{ bioEl.classList.toggle('expanded'); toggleEl.textContent=bioEl.classList.contains('expanded')? 'Show less ▲':'Read more ▼'; }); }
   </script>
 </body>
 </html>
