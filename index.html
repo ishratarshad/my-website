@@ -97,6 +97,20 @@
     .type{font-family:"JetBrains Mono",monospace;font-size:18px;min-height:28px}
     .modal .actions{display:flex;justify-content:flex-end;margin-top:16px}
     .modal button{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:white;border:none;padding:10px 14px;border-radius:12px;cursor:pointer}
+    /* Contact styling */
+    .contact-items{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+    .contact-items a{color:#fff;text-decoration:none}
+    .contact-items a:hover{text-decoration:underline}
+    /* Terminal + commit animation (Hello World modal) */
+    .terminal{font-family:"JetBrains Mono",monospace;background:#140b22;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:14px 12px;color:#f5e6ff;min-height:88px;position:relative}
+    .terminal code{white-space:pre-wrap}
+    .cursor{display:inline-block;margin-left:2px;animation:blink 1s step-end infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+    .commit-btn{background:rgba(255,255,255,.06);color:#fff;border:none;border-radius:10px;padding:10px 14px;cursor:pointer;margin-right:8px}
+    .commit-btn.pressed{filter:brightness(1.08);transform:translateY(-1px)}
+    .progress{height:6px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden;max-width:220px;display:inline-block;vertical-align:middle;margin:0 8px}
+    .progress .bar{width:0;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width .2s ease}
+    .commit-status{font-family:"JetBrains Mono",monospace;font-size:12px;color:#cfb7ff;margin-left:6px}
   </style>
 </head>
 <body>
@@ -134,7 +148,7 @@
         <div>
           <div class="title">Computer Science & Economics • AI/ML • Builder</div>
           <div class="bio" id="bio">
-            <p> I am a Computer Science and Economics major at Hunter College, with a strong interest in AI, data analysis, and creating technology that makes a real impact. I’m passionate about exploring how technology and data connect to the real world and how they can be used to solve meaningful problems.</p>
+            <p>I’m Ishrat Arshad, a Computer Science and Economics major at Hunter College, with a strong interest in AI, data analysis, and creating technology that makes a real impact. I’m passionate about exploring how technology and data connect to the real world and how they can be used to solve meaningful problems.</p>
             <p>My experiences span software engineering, product management, and leadership. In my software engineering internships, I built and improved real features while collaborating across teams, and in one role I was promoted to Product Manager, where I guided projects from idea to implementation, balancing technical detail with strategy and user needs. Outside of internships, I’ve led as Tech Lead Director of the CS Club and mentored students through coding programs, experiences that strengthened both my technical foundation and my ability to collaborate and lead.</p>
             <p>I’m especially passionate about how technology can bridge gaps in healthcare, education, and access for underrepresented communities. At my core, I’m curious and entrepreneurial. I love building from the ground up, combining creativity with problem-solving, and working in spaces that allow me to keep learning and growing. What drives me most is the opportunity to create work that is not only technically strong but also meaningful, accessible, and impactful in everyday life.</p>
           </div>
@@ -143,7 +157,7 @@
             <div class="badge">Python • C++ • JavaScript</div>
             <div class="badge">React.js • Flask • SQL</div>
             <div class="badge">Data Analysis • AI/ML</div>
-            <div class="badge">Leadership • Product Managment</div>
+            <div class="badge">Leadership • Product Mgmt</div>
           </div>
           <div class="cta">
             <a class="btn primary" href="Ishrat_Arshad_Resume.pdf" target="_blank" rel="noopener">📄 Resume</a>
@@ -204,35 +218,8 @@
           </div>
         </article>
 
-        <!-- 4. NeuralSeek -->
-        <article class="experience-item" role="listitem">
-          <div class="exp-logo"><img src="neuralseek.png" alt="NeuralSeek logo"></div>
-          <div>
-            <div class="exp-header">
-              <div>
-                <div class="exp-role">AI Agent Builder Intern</div>
-                <div class="exp-org">NeuralSeek (Remote)</div>
-                <div class="exp-date">July 2025 – Present</div>
-              </div>
-            </div>
-            <div class="exp-body">Designed and deployed custom AI agents using NeuralSeek’s no-code orchestration platform with multi-agent architecture and LLM integration. Completed certifications in AI Agent Architecture, Explainability, and Human-in-the-Loop systems.</div>
-          </div>
-        </article>
-        
-        <!-- 5. Undergraduate TA -->
-        <article class="experience-item" role="listitem">
-          <div class="exp-logo"><img src="hunterlogo.jpeg" alt="Hunter College logo"></div>
-          <div>
-            <div class="exp-header">
-              <div>
-                <div class="exp-role">Undergraduate Teaching Assistant</div>
-                <div class="exp-org">Hunter College</div>
-                <div class="exp-date">June 2025 – Present</div>
-              </div>
-            </div>
-            <div class="exp-body">Facilitated tutoring for 40+ students in Data Structures & Algorithms (C++). Guided weekly labs on recursion, polymorphism, and backtracking, improving comprehension and debugging skills.</div>
-          </div>
-        </article>
+        $2
+$1
 
         <!-- 6. CUNY Tech Prep (last) -->
         <article class="experience-item" role="listitem">
@@ -309,7 +296,11 @@
     <!-- Section: Contact -->
     <section class="section reveal" id="contact">
       <h2>Contact</h2>
-      <p>Best way to reach me: <a href="https://www.linkedin.com/in/ishratarshad" target="_blank" rel="noopener">LinkedIn</a>.</p>
+      <div class="contact-items">
+        <div>Email: <a href="mailto:ishratarshad101@gmail.com">ishratarshad101@gmail.com</a></div>
+        <div>Phone: <a href="tel:+19177491788">(917) 749‑1788</a></div>
+        <div>LinkedIn: <a href="https://www.linkedin.com/in/ishratarshad" target="_blank" rel="noopener">linkedin.com/in/ishratarshad</a></div>
+      </div>
     </section>
   </main>
 
@@ -317,8 +308,13 @@
   <div class="modal-bg" id="modal">
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
       <h3 id="modal-title">popup()</h3>
-      <div class="type" id="typewriter" aria-live="polite"></div>
-      <div class="actions">
+      <div class="terminal" id="terminal" aria-live="polite">
+        <code id="termCode"></code><span class="cursor">▌</span>
+      </div>
+      <div class="actions" style="gap:8px;align-items:center">
+        <button id="commitBtn" class="commit-btn" aria-label="Commit">git commit -m "hello world"</button>
+        <div class="progress" id="commitProg"><div class="bar" id="commitBar"></div></div>
+        <span class="commit-status" id="commitStatus" hidden>Committed to <b>main</b> ✓</span>
         <button id="closeModal" aria-label="Close">Close <span class="brand-sub">Esc</span></button>
       </div>
     </div>
@@ -330,17 +326,61 @@
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Modal typewriter
+    // Modal typewriter (code + commit animation)
     const modal = document.getElementById('modal');
-    const closeBtn = document.getElementById('closeModal');
-    function openModal(){ modal.style.display='flex'; setTimeout(typeHello, 120); }
+    function openModal(){ modal.style.display='flex'; setTimeout(typeHello, 150); }
     function closeModal(){ modal.style.display='none'; }
-    closeBtn?.addEventListener('click', closeModal);
+    document.getElementById('closeModal')?.addEventListener('click', closeModal);
     modal?.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
     window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
-    const text = "hello world, i am Ishrat Arshad."; const box = document.getElementById('typewriter'); let i = 0;
-    function typeHello(){ box.textContent=''; i=0; const tick=()=>{ if(i<=text.length){ box.textContent=text.slice(0,i)+(i%2?'▌':''); i++; setTimeout(tick,55);} else { box.textContent=text; } }; tick(); }
-    const SEEN_KEY='seen_hello_world'; if(!sessionStorage.getItem(SEEN_KEY)){ openModal(); sessionStorage.setItem(SEEN_KEY,'1'); }
+
+    const term = document.getElementById('termCode');
+    const cursor = document.querySelector('#terminal .cursor');
+    const commitBtn = document.getElementById('commitBtn');
+    const bar = document.getElementById('commitBar');
+    const status = document.getElementById('commitStatus');
+
+    const code = '>>> print("hello world, i\'m Ishrat Arshad")
+hello world, i\'m Ishrat Arshad';
+    let index = 0;
+    function typeHello(){
+      term.textContent = '';
+      index = 0;
+      const chars = code.split('');
+      const tick = () => {
+        if(index < chars.length){
+          term.textContent += chars[index++];
+          setTimeout(tick, 40);
+        } else {
+          cursor.style.opacity = .3;
+          setTimeout(()=>simulateCommit(), 600);
+        }
+      };
+      tick();
+    }
+
+    function simulateCommit(){
+      if(!commitBtn || commitBtn.dataset.done) return;
+      commitBtn.classList.add('pressed');
+      commitBtn.disabled = true;
+      let w=0; bar.style.width='0%';
+      const t = setInterval(()=>{
+        w += 8; bar.style.width = w + '%';
+        if(w>=100){
+          clearInterval(t);
+          status.hidden = false;
+          commitBtn.textContent = 'Committed ✓';
+          commitBtn.dataset.done='1';
+        }
+      }, 60);
+    }
+    commitBtn?.addEventListener('click', simulateCommit);
+
+    const SEEN_KEY='seen_hello_world';
+    if(!sessionStorage.getItem(SEEN_KEY)){
+      openModal();
+      sessionStorage.setItem(SEEN_KEY,'1');
+    }
 
     // Smooth anchor scroll + scrollspy
     const sections = ['about','experience','projects','contact'];
