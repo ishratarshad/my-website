@@ -10,78 +10,244 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg-1:#0b0613;
-      --bg-2:#1b0f2e;
-      --ink:#f7e9ff;
-      --muted:#cfb7ff;
-      --accent:#e26ddb;
-      --accent-2:#9b5cff;
-      --glass:rgba(255,255,255,0.08);
+      --bg-1:#0b0613; --bg-2:#150a23; --ink:#f7e9ff; --muted:#cfb7ff;
+      --accent:#e26ddb; --accent-2:#9b5cff; --glass:rgba(255,255,255,0.08);
       --shadow:0 10px 30px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.06);
       --radius:20px;
     }
-    body{margin:0;color:var(--ink);font-family:Inter,sans-serif;background:linear-gradient(120deg,var(--bg-1),var(--bg-2));overflow-x:hidden;}
-    .orb{position:fixed;filter:blur(40px);opacity:.5;z-index:-1;mix-blend-mode:screen;}
-    .orb.one{width:600px;height:600px;left:-150px;top:-120px;background:radial-gradient(circle at 30% 30%,#ff82e7,transparent 60%);animation:float 12s ease-in-out infinite;}
-    .orb.two{width:520px;height:520px;right:-160px;top:30vh;background:radial-gradient(circle at 60% 40%,#a884ff,transparent 60%);animation:float 14s ease-in-out infinite reverse;}
-    .orb.three{width:420px;height:420px;left:20vw;bottom:-120px;background:radial-gradient(circle at 60% 40%,#ff5bab,transparent 60%);animation:float 18s ease-in-out infinite;}
-    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
-    .wrap{max-width:1000px;margin:0 auto;padding:72px 20px 100px;}
-    .card{margin-top:36px;display:grid;grid-template-columns:220px 1fr;gap:28px;align-items:center;padding:28px;background:var(--glass);border-radius:var(--radius);box-shadow:var(--shadow);backdrop-filter:blur(10px);}
-    @media(max-width:760px){.card{grid-template-columns:1fr}}
-    .avatar{width:220px;height:220px;border-radius:24px;object-fit:cover;box-shadow:var(--shadow);border:2px solid rgba(255,255,255,.12)}
-    h1{font-size:38px;line-height:1.1;margin:0 0 8px;}
-    .title{font-weight:600;color:var(--muted);margin-bottom:14px}
-    p{color:#e9dbffcc;line-height:1.6}
-    .badges{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 6px}
-    .badge{font-size:12px;padding:6px 10px;border-radius:999px;background:linear-gradient(135deg,rgba(231,116,221,.22),rgba(155,92,255,.22));border:1px solid rgba(255,255,255,.14)}
-    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
-    .btn{padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.16);text-decoration:none;color:var(--ink);display:inline-flex;align-items:center;gap:10px;box-shadow:var(--shadow);transition:.2s transform,.2s filter,.2s background}
-    .btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
-    .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2))}
-    .btn.ghost{background:rgba(255,255,255,.06)}
-    .bio{max-height:250px;overflow:hidden;position:relative;transition:max-height .6s ease;}
-    .bio.expanded{max-height:2000px;}
-    .read-more{color:var(--accent);cursor:pointer;font-size:14px;display:inline-block;margin-top:10px;}
+    body{margin:0;color:var(--ink);font-family:Inter,sans-serif;background:linear-gradient(120deg,var(--bg-1),var(--bg-2));overflow-x:hidden}
+    .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+    header{position:sticky;top:0;z-index:10;backdrop-filter:blur(10px);background:rgba(11,6,19,.7);border-bottom:1px solid rgba(255,255,255,.08)}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+    .brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--ink)}
+    .brand-title{font-weight:800;letter-spacing:.2px}
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px;position:relative}
+    nav a:hover{color:#fff}
+
+    .container{max-width:1100px;margin:0 auto;padding:72px 20px 100px}
+    h1{font-size:44px;margin:0 0 10px}
+    .gradient-text{background:linear-gradient(90deg,#f8c3ff,#cfb7ff,#ff7edb);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+    .section{margin-top:60px}
+    .section h2{font-size:26px;color:#f5e6ff;margin-bottom:20px}
+
+    .experience-list{display:flex;flex-direction:column;gap:28px}
+    .experience-item{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.04));padding:20px 24px;border-radius:16px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.12);transition:transform .25s ease;display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:flex-start}
+    .experience-item:hover{transform:translateY(-4px)}
+    .exp-logo{width:50px;height:50px;border-radius:12px;object-fit:cover;flex-shrink:0;box-shadow:var(--shadow)}
+    .exp-content{flex:1}
+    .exp-logo{width:56px;height:56px;border-radius:14px;display:grid;place-items:center;font-weight:800;color:white;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.14);background:linear-gradient(135deg, var(--accent), var(--accent-2))}
+    .exp-logo.small{font-size:14px;letter-spacing:.3px}
+    .exp-logo.mv{background:linear-gradient(135deg,#a77bff,#ff7edb)}
+    .exp-logo.ctp{background:linear-gradient(135deg,#8ae1ff,#b38bff)}
+    .exp-logo.un{background:linear-gradient(135deg,#ffb3d1,#b38bff)}
+    .exp-logo.td{background:linear-gradient(135deg,#b2ffda,#b38bff)}
+    .exp-logo.ns{background:linear-gradient(135deg,#ffd18a,#b38bff)}
+    .exp-logo.ct{background:linear-gradient(135deg,#ffa8f0,#9ad1ff)}
+    .exp-logo.hc{background:linear-gradient(135deg,#c8b6ff,#ffd6a5)}
+    .exp-role{font-weight:600;font-size:18px;color:white}
+    .exp-org{font-size:16px;color:var(--muted)}
+    .exp-date{font-size:14px;color:#aaa;margin-top:4px}
+    .exp-body{margin-top:12px;color:#e9dbffcc;line-height:1.6}
+    /* nav bar like example: underline + active state */
+    nav{display:flex;align-items:center;gap:18px}
+    .nav-link{color:var(--muted);text-decoration:none;font-size:15px;position:relative;padding:6px 2px}
+    .nav-link:after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent-2));transform:scaleX(0);transform-origin:left;transition:transform .25s}
+    .nav-link:hover{color:#fff}
+    .nav-link:hover:after{transform:scaleX(1)}
+    .nav-link.active{color:#fff}
+    .nav-link.active:after{transform:scaleX(1)}
+    /* Projects list styling */
+    .projects-list{display:flex;flex-direction:column;gap:18px}
+    .project-item{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:18px 20px;box-shadow:var(--shadow);transition:transform .25s ease}
+    .project-item:hover{transform:translateY(-4px)}
+    .project-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .project-title{font-weight:700;color:#fff}
+    .project-date{font-family:"JetBrains Mono",monospace;font-size:12px;color:#bfb3d9;opacity:.9}
+    .project-meta{font-family:"JetBrains Mono",monospace;font-size:12px;color:#cfb7ff;margin-top:6px}
+    .project-desc{margin-top:10px;color:#e9dbffcc;line-height:1.6}
   </style>
 </head>
 <body>
-  <div class="orb one"></div>
-  <div class="orb two"></div>
-  <div class="orb three"></div>
-  <div class="wrap">
-    <main class="card" id="about">
-      <img class="avatar" src="Ishrat_Arshad_Photo.png" alt="Portrait of Ishrat Arshad" />
-      <div>
-        <h1>Hi, I’m Ishrat <span style="color:var(--accent)">Arshad</span> 👋</h1>
-        <div class="title">Computer Science & Economics • SWE Intern • AI/ML Fellow </div>
-        <div class="bio" id="bio">
-          <p>I’m Ishrat Arshad, a Computer Science and Economics major at Hunter College, with a strong interest in AI, data analysis, and creating technology that makes a real impact. I’m passionate about exploring how technology and data connect to the real world and how they can be used to solve meaningful problems.</p>
-          <p>My experiences span software engineering, product management, and leadership. In my software engineering internships, I built and improved real features while collaborating across teams, and in one role I was promoted to Product Manager, where I guided projects from idea to implementation, balancing technical detail with strategy and user needs. Outside of internships, I’ve led as Tech Lead Director of the CS Club and mentored students through coding programs, experiences that strengthened both my technical foundation and my ability to collaborate and lead.</p>
-          <p>I’m especially passionate about how technology can bridge gaps in healthcare, education, and access for underrepresented communities. At my core, I’m curious and entrepreneurial. I love building from the ground up, combining creativity with problem-solving, and working in spaces that allow me to keep learning and growing. What drives me most is the opportunity to create work that is not only technically strong but also meaningful, accessible, and impactful in everyday life.</p>
+  <header>
+    <div class="wrap header-inner">
+      <a class="brand" href="#" aria-label="Home">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div class="brand-title">Ishrat Arshad</div>
+          <div class="brand-sub">CS • AI/ML • Builder</div>
         </div>
-        <span class="read-more" id="toggleBio">Read more ▼</span>
-        <div class="badges">
-          <div class="badge">Python • C++ • JavaScript</div>
-          <div class="badge">React.js • Flask • SQL</div>
-          <div class="badge">Data Analysis • AI/ML</div>
-          <div class="badge">Leadership • Product Mgmt</div>
+      </a>
+      <nav aria-label="Primary">
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#experience">Experience</a>
+        <a class="nav-link" href="#projects">Projects</a>
+        <a class="nav-link" href="#contact">Contact</a>
+        <a class="nav-link" href="Ishrat_Arshad_Resume.pdf" target="_blank" rel="noopener">Resume ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Section: About -->
+    <section id="about">
+      <h1>Hi, I’m <span class="gradient-text">Ishrat Arshad</span> 👋</h1>
+      <p>Computer Science & Economics major at Hunter College with strong interest in AI, data analysis, and building technology with real-world impact.</p>
+    </section>
+
+    <!-- Section: Experience -->
+    <section class="section" id="experience">
+      <h2>Experience</h2>
+      <div class="experience-list">
+        <div class="experience-item">
+          <div class="exp-logo mv" aria-hidden="true">MV</div>
+          <div>
+            <div class="exp-header">
+              <div>
+                <div class="exp-role">Software Engineer Intern</div>
+                <div class="exp-org">Movement Vault (Startup)</div>
+                <div class="exp-date">August 2025 – Present</div>
+              </div>
+            </div>
+            <div class="exp-body">Optimized app performance by incorporating lazy loading for images and videos stored in AWS S3, ensuring efficient resource usage, which led to a 10% decrease in initial load-up time for 4500+ exercises.</div>
+          </div>
+        <div class="experience-item">
+          <div class="exp-logo ctp" aria-hidden="true">CTP</div>
+          <div>
+            <div class="exp-header">
+              <div>
+                <div class="exp-role">Data Science Fellow</div>
+                <div class="exp-org">CUNY Tech Prep</div>
+                <div class="exp-date">August 2024 – May 2025</div>
+              </div>
+            </div>
+            <div class="exp-body">Selected for a competitive data science fellowship gaining hands-on experience in data analytics, machine learning, and full-stack development.</div>
+          </div>
         </div>
-        <p><strong>Fun fact:</strong> I grew up surrounded by healthcare work, which inspired my passion for building tech that helps people.</p>
-        <div class="cta" id="links">
-          <a class="btn primary" href="Ishrat_Arshad_Resume.pdf" target="_blank" rel="noopener">📄 Resume</a>
-          <a class="btn ghost" href="https://www.linkedin.com/in/ishratarshad" target="_blank" rel="noopener">🔗 LinkedIn</a>
-          <a class="btn ghost" href="https://github.com/ishratarshad" target="_blank" rel="noopener">💻 GitHub</a>
+
+        <div class="experience-item">
+          <div class="exp-logo td" aria-hidden="true">TD</div>
+          <div>
+            <div class="exp-header">
+              <div>
+                <div class="exp-role">Database Software Engineer Intern</div>
+                <div class="exp-org">The Difference App (Hybrid)</div>
+                <div class="exp-date">June 2025 – Present</div>
+              </div>
+            </div>
+            <div class="exp-body">Developed and deployed cross-platform health app features serving 700+ active users using Flutter, Laravel, and MySQL. Streamlined development operations with comprehensive local environment setup, reducing onboarding time and accelerating QA integration.</div>
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <div class="exp-logo ns" aria-hidden="true">NS</div>
+          <div>
+            <div class="exp-header">
+              <div>
+                <div class="exp-role">AI Agent Builder Intern</div>
+                <div class="exp-org">NeuralSeek (Remote)</div>
+                <div class="exp-date">July 2025 – Present</div>
+              </div>
+            </div>
+            <div class="exp-body">Designed and deployed custom AI agents using NeuralSeek’s no-code orchestration platform with multi-agent architecture and LLM integration. Completed certifications in AI Agent Architecture, Explainability, and Human-in-the-Loop systems.</div>
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <div class="exp-logo ct" aria-hidden="true">CT</div>
+          <div>
+            <div class="exp-header">
+              <div>
+                <div class="exp-role">AI/ML Fellow</div>
+                <div class="exp-org">Cornell Tech & Breakthrough Tech (Remote)</div>
+                <div class="exp-date">April 2025 – Present</div>
+              </div>
+            </div>
+            <div class="exp-body">Engineered and optimized end-to-end ML pipelines with Python, scikit-learn, and pandas, focusing on fairness, explainability, and scalability. Presented technical findings to engineering teams and mentors.</div>
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <div class="exp-logo hc" aria-hidden="true">HC</div>
+          <div>
+            <div class="exp-header">
+              <div>
+                <div class="exp-role">Undergraduate Teaching Assistant</div>
+                <div class="exp-org">Hunter College</div>
+                <div class="exp-date">June 2025 – Present</div>
+              </div>
+            </div>
+            <div class="exp-body">Facilitated tutoring for 40+ students in Data Structures & Algorithms (C++). Guided weekly labs on recursion, polymorphism, and backtracking, improving comprehension and debugging skills.</div>
+          </div>
         </div>
       </div>
-    </main>
-  </div>
+    </section>
+
+    <!-- Section: Projects -->
+    <section class="section" id="projects">
+      <h2>Projects</h2>
+      <div class="projects-list">
+        <div class="project-item">
+          <div class="project-top">
+            <div class="project-title">RecipEase – Smart Recipes</div>
+            <div class="project-date">Jun–Jul 2025</div>
+          </div>
+          <div class="project-meta">React • External Recipe API • Team project • Mobile‑first UI</div>
+          <div class="project-desc">Built a personalized recipe recommender that respects dietary restrictions and preferences. Implemented search, filters, and clean card layouts; collaborated on Figma design and deployed a responsive frontend. Focused on accessibility and quick scanning on mobile.</div>
+        </div>
+        <div class="project-item">
+          <div class="project-top">
+            <div class="project-title">SteadyCare – AI Health Assistant</div>
+            <div class="project-date">Jan 2025 – Present</div>
+          </div>
+          <div class="project-meta">Python • Flask • NLP • Reminders</div>
+          <div class="project-desc">Voice/text assistant that manages medications, appointments, and health questions. Uses practical prompts and scheduled reminders; designed simple flows to help non‑technical users stay on track.</div>
+        </div>
+        <div class="project-item">
+          <div class="project-top">
+            <div class="project-title">NewsGuard – Misinformation Detection</div>
+            <div class="project-date">Apr 2025 – Present</div>
+          </div>
+          <div class="project-meta">React • Flask • LIME Explainability • NLP</div>
+          <div class="project-desc">Classifies articles and explains why with color‑coded highlights, word weights, and confidence scores. Emphasis on transparency and accessible UI so users can verify model reasoning.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Contact -->
+    <section class="section" id="contact">
+      <h2>Contact</h2>
+      <p>Best way to reach me: <a href="https://www.linkedin.com/in/ishratarshad">LinkedIn</a></p>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <p>© <span id="year"></span> Ishrat Arshad</p>
+  </footer>
+
   <script>
-    const bio=document.getElementById('bio');
-    const toggle=document.getElementById('toggleBio');
-    toggle.addEventListener('click',()=>{
-      bio.classList.toggle('expanded');
-      toggle.textContent=bio.classList.contains('expanded')?"Show less ▲":"Read more ▼";
+    document.getElementById('year').textContent = new Date().getFullYear();
+      // Scrollspy active nav link
+    const sections = ['about','experience','projects','contact'];
+    const links = sections.map(id => [id, document.querySelector(`nav a[href='#${id}']`)]);
+    const spy = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        const id = entry.target.id;
+        const link = document.querySelector(`nav a[href='#${id}']`);
+        if(link){
+          if(entry.isIntersecting){ link.classList.add('active'); }
+          else { link.classList.remove('active'); }
+        }
+      });
+    },{ rootMargin: '-40% 0px -55% 0px', threshold: 0.01 });
+    sections.forEach(id=>{ const el=document.getElementById(id); if(el) spy.observe(el); });
+
+    // Smooth scroll for nav
+    document.querySelectorAll('nav a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',e=>{
+        const id=a.getAttribute('href').slice(1); const el=document.getElementById(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth',block:'start'}); }
+      });
     });
   </script>
 </body>
