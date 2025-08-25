@@ -481,5 +481,16 @@ hello world, i\'m Ishrat Arshad';
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ensureHelloModal); else ensureHelloModal();
 })();
 </script>
+<script id="hello-modal-autoshow">
+(function(){
+  function autoshow(){
+    try{ if (typeof openModal === 'function') { openModal(); return; } }catch(_){ }
+    var m = document.getElementById('modal');
+    if (m) m.style.display = 'flex';
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', autoshow);
+  else autoshow();
+})();
+</script>
 </body>
 </html>
