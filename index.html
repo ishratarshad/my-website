@@ -173,34 +173,104 @@
       <h2>Experience</h2>
       <div class="experience-list" role="list">
         <!-- 1. Movement Vault -->
-        
-
-        <!-- 6. CUNY Tech Prep (last) -->
-        <!-- Undergraduate TA -->
-        <article class=\"experience-item\" role=\"listitem\">
-          <div class=\"exp-logo\"><img src=\"hunterlogo.jpeg\" alt=\"Hunter College logo\"></div>
+        <article class="experience-item" role="listitem">
+          <div class="exp-logo"><img src="movement_vault.webp" alt="Movement Vault logo"></div>
           <div>
-            <div class=\"exp-header\">
+            <div class="exp-header">
               <div>
-                <div class=\"exp-role\">Undergraduate Teaching Assistant</div>
-                <div class=\"exp-org\">Hunter College</div>
-                <div class=\"exp-date\">June 2025 – Present</div>
+                <div class="exp-role">Software Engineer Intern</div>
+                <div class="exp-org">Movement Vault (Startup)</div>
+                <div class="exp-date">August 2025 – Present</div>
               </div>
             </div>
-            <div class=\"exp-body\">Facilitated tutoring for 40+ students in Data Structures &amp; Algorithms (C++). Guided weekly labs on recursion, polymorphism, and backtracking, improving comprehension and debugging skills.</div>
+            <div class="exp-body">Optimized app performance by incorporating lazy loading for images and videos stored in AWS S3, ensuring efficient resource usage, which led to a 10% decrease in initial load-up time for 4500+ exercises.</div>
           </div>
         </article>
 
-        $1
+        <!-- 2. Unadat -->
+        <article class="experience-item" role="listitem">
+          <div class="exp-logo"><img src="unadat.webp" alt="Unadat logo"></div>
+          <div>
+            <div class="exp-header">
+              <div>
+                <div class="exp-role">Software Engineer Intern</div>
+                <div class="exp-role">Associate Product Manager</div>
+                <div class="exp-org">Unadat (Remote)</div>
+                <div class="exp-date">May 2025 – Present</div>
+              </div>
+            </div>
+            <div class="exp-body">Developed production-ready features and UI components for a scalable SaaS web app, implemented interactive front-end interfaces with backend integration using HTML, JS, PHP, Google Cloud, and optimized application performance across devices.</div>
+          </div>
+        </article>
 
-        <!-- 7. Cornell Tech (last) -->
+        <!-- 3. The Difference App -->
+        <article class="experience-item" role="listitem">
+          <div class="exp-logo"><img src="thedifference.png" alt="The Difference App logo"></div>
+          <div>
+            <div class="exp-header">
+              <div>
+                <div class="exp-role">Database Software Engineer Intern</div>
+                <div class="exp-org">The Difference App (Hybrid)</div>
+                <div class="exp-date">June 2025 – Present</div>
+              </div>
+            </div>
+            <div class="exp-body">Developed and deployed cross-platform health app features serving 700+ active users using Flutter, Laravel, and MySQL. Streamlined development operations with comprehensive local environment setup, reducing onboarding time and accelerating QA integration.</div>
+          </div>
+        </article>
+
+        <!-- 4. NeuralSeek -->
+        <article class="experience-item" role="listitem">
+          <div class="exp-logo"><img src="neuralseek.png" alt="NeuralSeek logo"></div>
+          <div>
+            <div class="exp-header">
+              <div>
+                <div class="exp-role">AI Agent Builder Intern</div>
+                <div class="exp-org">NeuralSeek (Remote)</div>
+                <div class="exp-date">July 2025 – Present</div>
+              </div>
+            </div>
+            <div class="exp-body">Designed and deployed custom AI agents using NeuralSeek’s no-code orchestration platform with multi-agent architecture and LLM integration. Completed certifications in AI Agent Architecture, Explainability, and Human-in-the-Loop systems.</div>
+          </div>
+        </article>
+
+        <!-- 5. Undergraduate Teaching Assistant -->
+        <article class="experience-item" role="listitem">
+          <div class="exp-logo"><img src="hunterlogo.jpeg" alt="Hunter College logo"></div>
+          <div>
+            <div class="exp-header">
+              <div>
+                <div class="exp-role">Undergraduate Teaching Assistant</div>
+                <div class="exp-org">Hunter College</div>
+                <div class="exp-date">June 2025 – Present</div>
+              </div>
+            </div>
+            <div class="exp-body">Facilitated tutoring for 40+ students in Data Structures &amp; Algorithms (C++). Guided weekly labs on recursion, polymorphism, and backtracking, improving comprehension and debugging skills.</div>
+          </div>
+        </article>
+
+        <!-- 6. CUNY Tech Prep -->
+        <article class="experience-item" role="listitem">
+          <div class="exp-logo"><img src="ctp-logo-square.webp" alt="CUNY Tech Prep logo"></div>
+          <div>
+            <div class="exp-header">
+              <div>
+                <div class="exp-role">Data Science Fellow</div>
+                <div class="exp-org">CUNY Tech Prep</div>
+                <div class="exp-date">August 2024 – May 2025</div>
+              </div>
+            </div>
+            <div class="exp-body">Selected for a competitive data science fellowship gaining hands-on experience in data analytics, machine learning, and full-stack development.</div>
+          </div>
+        </article>
+
+        <!-- 7. Cornell Tech & Breakthrough Tech -->
         <article class="experience-item" role="listitem">
           <div class="exp-logo"><img src="cornell.png" alt="Cornell Tech logo"></div>
           <div>
             <div class="exp-header">
               <div>
                 <div class="exp-role">AI/ML Fellow</div>
-                <div class="exp-org">Cornell Tech & Breakthrough Tech (Remote)</div>
+                <div class="exp-org">Cornell Tech &amp; Breakthrough Tech (Remote)</div>
                 <div class="exp-date">April 2025 – Present</div>
               </div>
             </div>
@@ -354,5 +424,62 @@ hello world, i\'m Ishrat Arshad';
     const toggle=document.getElementById('toggleBio');
     toggle?.addEventListener('click',()=>{ bio.classList.toggle('expanded'); toggle.textContent=bio.classList.contains('expanded')? 'Show less ▲':'Read more ▼'; });
   </script>
+<script id="hello-modal-bootstrap">
+(function(){
+  if (window.__hello_modal_bootstrapped) return; // avoid double init
+  window.__hello_modal_bootstrapped = true;
+  function injectHelloStyles(){
+    if (document.getElementById('hello-modal-styles')) return;
+    const s=document.createElement('style'); s.id='hello-modal-styles';
+    s.textContent = `.modal-bg{position:fixed;inset:0;background:rgba(6,2,12,.6);display:none;align-items:center;justify-content:center;z-index:20}
+    .modal{width:min(560px,92vw);background:rgba(22,12,34,.9);border:1px solid rgba(255,255,255,.14);border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.35);padding:22px 20px 18px}
+    .modal h3{margin:0 0 6px;font-family:JetBrains Mono,monospace;font-size:16px;color:#cfb7ff}
+    .type{font-family:JetBrains Mono,monospace;font-size:18px;min-height:28px;white-space:pre-wrap}
+    .modal .actions{display:flex;justify-content:flex-end;gap:10px;margin-top:16px}
+    .modal button{background:linear-gradient(135deg,#e26ddb,#9b5cff);color:white;border:none;padding:10px 14px;border-radius:12px;cursor:pointer}`;
+    document.head.appendChild(s);
+  }
+  function ensureHelloModal(){
+    injectHelloStyles();
+    let modal=document.getElementById('modal');
+    if(!modal){
+      modal=document.createElement('div');
+      modal.className='modal-bg'; modal.id='modal';
+      modal.innerHTML=`<div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <h3 id="modal-title">popup()</h3>
+        <div class="type" id="typewriter" aria-live="polite"></div>
+        <div class="actions">
+          <button id="runModal" aria-label="Run">Run ▶</button>
+          <button id="closeModal" aria-label="Close">Close <span class="brand-sub">Esc</span></button>
+        </div>
+      </div>`;
+      document.body.appendChild(modal);
+    }
+    const closeBtn=modal.querySelector('#closeModal');
+    const runBtn=modal.querySelector('#runModal');
+    const box=modal.querySelector('#typewriter');
+    function openModal(){ modal.style.display='flex'; }
+    function closeModal(){ modal.style.display='none'; }
+    closeBtn && closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
+    window.addEventListener('keydown',(e)=>{ if(e.key==='Escape') closeModal(); });
+
+    const code = '>>> print("hello world, i\'m Ishrat Arshad")
+hello world, i\'m Ishrat Arshad';
+    function typeHello(){
+      box.textContent=''; let i=0;
+      (function tick(){
+        if(i<=code.length){ box.textContent = code.slice(0,i) + (i%2?'▌':''); i++; setTimeout(tick,45); }
+        else { box.textContent = code; }
+      })();
+    }
+    runBtn && runBtn.addEventListener('click', ()=>{ runBtn.textContent='Running…'; runBtn.disabled=true; typeHello(); setTimeout(()=>{ runBtn.textContent='Ran ✓'; runBtn.disabled=false; }, Math.max(800, code.length*45 + 200)); });
+
+    // Always open on load now
+    openModal();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ensureHelloModal); else ensureHelloModal();
+})();
+</script>
 </body>
 </html>
