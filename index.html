@@ -477,5 +477,74 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 });
 </script>
+<script id="popup-fix">
+(function(){
+  // find existing modal or create a safe one without removing anything
+  var modal = document.getElementById('modal') || document.getElementById('helloModal');
+  if(!modal){
+    modal = document.createElement('div');
+    modal.id = 'modal';
+    modal.className = 'modal-bg';
+    modal.style.display = 'none';
+    modal.innerHTML = '<div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <h3 id="modal-title">popup()</h3>
+        <div class="type" id="typewriter" aria-live="polite"></div>
+        <div class="actions">
+          <button id="runModal" type="button">Run</button>
+          <button id="closeModal" type="button">Close <span class="brand-sub">Esc</span></button>
+        </div>
+      </div>';
+    document.body.appendChild(modal);
+  } else {
+    // ensure expected elements/ids exist
+    var container = modal.querySelector('.modal') || modal;
+    var typeBox = modal.querySelector('#typewriter') || modal.querySelector('#helloType');
+    if(!typeBox){
+      container.innerHTML = '<h3 id="modal-title">popup()</h3>
+        <div class="type" id="typewriter" aria-live="polite"></div>
+        <div class="actions">
+          <button id="runModal" type="button">Run</button>
+          <button id="closeModal" type="button">Close <span class="brand-sub">Esc</span></button>
+        </div>';
+    } else { typeBox.id = 'typewriter'; }
+    var rb = modal.querySelector('#runModal') || modal.querySelector('#helloRun');
+    if(rb) rb.id = 'runModal';
+    var cb = modal.querySelector('#closeModal') || modal.querySelector('#helloClose');
+    if(cb) cb.id = 'closeModal';
+  }
+  function $(id){ return document.getElementById(id); }
+  var runBtn = $('runModal');
+  var closeBtn = $('closeModal');
+  var box = $('typewriter');
+  function show(){ modal.removeAttribute('hidden'); modal.style.display='flex'; }
+  function hide(){ modal.setAttribute('hidden',''); modal.style.display='none'; }
+  function typeText(str, done){
+    if(!box){ if(done) done(); return; }
+    box.textContent=''; var i=0;
+    (function tick(){
+      if(i<=str.length){ box.textContent = str.slice(0,i)+(i%2?'▌':''); i++; setTimeout(tick,45);} else { box.textContent=str; if(done) setTimeout(done,400);} })();
+  }
+  if(runBtn){
+    runBtn.onclick = function(){
+      runBtn.disabled = true; runBtn.textContent = 'Running…';
+      typeText("hello world, i'm Ishrat Arshad", function(){ runBtn.textContent='Done ✓'; hide(); runBtn.disabled=false; });
+    };
+  }
+  if(closeBtn){ closeBtn.onclick = hide; }
+  modal.addEventListener('click', function(e){ if(e.target===modal) hide(); });
+  window.addEventListener('keydown', function(e){ if(e.key==='Escape') hide(); });
+  // show immediately on load
+  show();
+  // ensure read-more works
+  var bio = document.getElementById('bio');
+  var toggle = document.getElementById('toggleBio');
+  if(toggle && bio){
+    toggle.onclick = function(){
+      bio.classList.toggle('expanded');
+      toggle.textContent = bio.classList.contains('expanded') ? 'Show less ▲' : 'Read more ▼';
+    };
+  }
+})();
+</script>
 </body>
 </html>
