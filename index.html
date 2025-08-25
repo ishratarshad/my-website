@@ -338,6 +338,12 @@
       <h3 id="modal-title">popup()</h3>
       <div class="type" id="typewriter" aria-live="polite"></div>
       <div class="actions">
+        <button id="runModal" aria-label="Run">Run</button>
+        <button id="closeModal" aria-label="Close">Close <span class="brand-sub">Esc</span></button>
+      </div>
+    </div>
+  </div>
+      <div class="actions">
         <button id="runModal" aria-label="Run">Run ▶</button>
         <button id="closeModal" aria-label="Close">Close <span class="brand-sub">Esc</span></button>
       </div>
@@ -443,25 +449,24 @@ document.addEventListener('DOMContentLoaded', function(){
   if(modal) modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
   window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
 
-  const code = '>>> print("hello world, i\'m Ishrat Arshad")
-hello world, i\'m Ishrat Arshad';
-  function typeHello(){
+  const text = "hello world, i'm Ishrat Arshad";
+  function typeText(){
     if(!box) return;
     box.textContent=''; let i=0;
     (function tick(){
-      if(i<=code.length){ box.textContent = code.slice(0,i) + (i%2?'▌':''); i++; setTimeout(tick,45); }
-      else { box.textContent = code; }
+      if(i<=text.length){ box.textContent = text.slice(0,i) + (i%2?'▌':''); i++; setTimeout(tick,45); }
+      else { box.textContent = text; setTimeout(closeModal, 600); }
     })();
   }
   if(runBtn) runBtn.addEventListener('click', ()=>{
-    runBtn.textContent='Running…'; runBtn.disabled=true; typeHello();
-    setTimeout(()=>{ runBtn.textContent='Ran ✓'; runBtn.disabled=false; }, Math.max(800, code.length*45 + 200));
+    runBtn.textContent='Running…'; runBtn.disabled=true; typeText();
+    setTimeout(()=>{ runBtn.textContent='Done ✓'; }, Math.max(800, text.length*45 + 200));
   });
 
   // Always show popup on first load
   openModal();
 
-  // Re-bind Read more toggle
+  // Read more toggle
   const bio = document.getElementById('bio');
   const toggle = document.getElementById('toggleBio');
   if(toggle && bio){
